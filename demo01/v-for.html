@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-for page</title>
+</head>
+<body>
+  <script src="../lib\js\vue.js" charset="utf-8"></script>
+  <div id="app">
+    <table>
+        <tr>
+          <td>name</td>
+          <td>age</td>
+          <td>qq</td>
+        </tr>
+        <tr v-for='item in persion'>
+            <td>{{item.name}}</td>
+            <td>{{item.age}}</td>
+            <td>{{item.qq}}</td>
+        </tr>
+    </table>
+
+  </div>
+  <script>
+    var data = {
+        persion:[
+          {
+            name:'jack',
+            age:'18',
+            qq:'12334445'
+          },
+          {
+            name:'zhangsan',
+            age:'20',
+            qq:'432432423'
+          },
+          {
+            name:'xiaohong',
+            age:'45',
+            qq:'3291284093218'
+          }
+        ]
+    }
+    var vm = new Vue({
+      el:"#app",
+      data:data
+    })
+  </script>
+</body>
+</html>

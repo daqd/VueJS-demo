@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-if案例</title>
+</head>
+<body>
+  <script src="../lib\js\vue.js" charset="utf-8"></script>
+  <div id="app">
+      <span v-if="demo1">应该展示出来的字段</span>
+      <span v-if="demo2">不应该展示出来的字段</span>
+      <span v-if="demo3 == 26">{{demo3}}</span>
+      <span v-if="demo4.indexOf('hello vueJS') > 0">demo4.indexOf('hell')</span>
+  </div>
+  <script>
+    var data = {
+      demo1:true,
+      demo2:false,
+      demo3:26,
+      demo4:'hello'
+    }
+
+    new Vue({
+      el:'#app',
+      data: data
+    })
+  </script>
+</body>
+</html>

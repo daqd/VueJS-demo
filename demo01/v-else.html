@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-else page</title>
+</head>
+<body>
+  <script src="../lib\js\vue.js" charset="utf-8"></script>
+  <div id="app">
+    <h1 v-if="isIf">if if  if </h1>
+    <h1 v-else>if 的 else</h1>
+
+    <h1 v-show="isShow">Show Show Show</h1>
+    <h1 v-else>show 的 else</h1>
+  </div>
+  <script>
+      var data = {
+        isIf: false,
+        isShow: false
+      }
+
+
+      var vm = new Vue({
+        el:"#app",
+        data:data
+      })
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-on page</title>
+</head>
+<body>
+  <script src="../lib\js\vue.js" charset="utf-8"></script>
+  <div id="app">
+        <div @click="demo1('hahha')">点击一下</div>
+        <div v-on:click="demo2">再点击一下</div>
+  </div>
+  <script>
+    var data = {
+        mes:"test data!"
+    }
+
+    var vm = new Vue({
+      el:"#app",
+      data:data,
+      methods:{
+        demo1:function(msg){
+            alert(msg);
+        },
+        demo2:function(){
+            alert(this.mes);
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

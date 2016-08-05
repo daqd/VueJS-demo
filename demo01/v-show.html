@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-show page</title>
+</head>
+<body>
+
+  <script src="../lib\js\vue.js" charset="utf-8"></script>
+  <div id="app">
+      <p v-show="rs1">不隐藏的节点</p>
+      <p v-show="rs2">隐藏的节点</p>
+      <p v-show="rs3 > 24">应该隐藏的节点！</p>
+  </div>
+  <script>
+    var data = {
+      rs1 : true,
+      rs2 : false,
+      rs3 : 23
+    }
+
+  var vm =  new Vue({
+      el:"#app",
+      data: data
+    })
+  </script>
+</body>
+</html>
