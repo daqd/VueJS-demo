@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组件内的作用域</title>
+</head>
+<body>
+  <script src="../lib\js\vue.js" charset="utf-8"></script>
+
+  <div id="app">
+      <my-component v-show="display">
+      </my-component>
+  </div>
+
+  <template id="myComponent">
+      <div>
+          <h2>{{msg}}</h2>
+          <button @click="showMsg">Show Msg</button>
+          <!-- {{display}}为false，组件内调用的数据的值为false -->
+      </div>
+  </template>
+  <script>
+      new Vue({
+          el: '#app',
+          data: {
+              display: true
+          },
+          components: {
+              'my-component': {
+                  template: '#myComponent',
+                  data: function() {
+                      return {
+                          msg: 'This is a component!',
+                          display: false
+                      }
+                  },
+                  methods: {
+                      showMsg: function() {
+                          alert(this.msg)
+                      }
+                  }
+              }
+          }
+      })
+  </script>
+</body>
+</html>

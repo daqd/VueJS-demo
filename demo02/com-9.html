@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>slot的使用</title>
+</head>
+<body>
+  <script src="../lib\js\vue.js" charset="utf-8"></script>
+  <div id="app">
+    <democomponent></democomponent>
+    <democomponent>放置slot的内容</democomponent>
+  </div>
+
+
+  <!-- 组件一 -->
+  <template id="com_1">
+      <h1>this is a demo component!</h1>
+      <slot>
+          如果没有分发内容则显示现在的内容
+      </slot>
+  </template>
+
+<script type="text/javascript">
+
+    Vue.component("democomponent",{
+      template:"#com_1"
+    });
+    new Vue({
+      el:"#app"
+    })
+
+
+</script>
+</body>
+</html>

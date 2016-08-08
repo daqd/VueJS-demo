@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>父组件访问子组件</title>
+</head>
+<body>
+    <script src="../lib\js\vue.js" charset="utf-8"></script>
+
+    <div id="app">
+        <parentcomponent></parentcomponent>
+    </div>
+
+
+    <template id="parentComponent">
+      <childComponent1 v-ref:refdemo></childComponent1>
+      <childComponent2></childComponent2>
+      <input type="button" value="获取所有组件的值" @click="getMsg">
+    </template>
+
+    <template id="childComponent1">
+        <h1>this component1!</h1>
+    </template>
+
+    <template id="childComponent2">
+        <h1>this component2!</h1>
+    </template>
+
+
+    <script type="text/javascript">
+      Vue.component('parentcomponent',{
+        template:"#parentComponent",
+        components:{
+          'childcomponent1':{
+            template:"#childComponent1",
+            data:function(){
+              return {
+                msg:"this is childComponent1's msg!"
+              }
+            }
+          },
+          'childcomponent2':{
+            template:"#childComponent2",
+            data:function(){
+              return {
+                msg:"this is childComponent2's msg!"
+              }
+            }
+          }
+        },
+        methods:{
+          getMsg:function(){
+            alert('弹出ref指向的子组件的msg！'+this.$refs.refdemo.msg);
+            for(var i=0;i<this.$children.length;i++){
+              alert(this.$children[i].msg);
+            }
+          }
+        }
+      })
+
+      new Vue({
+        el:"#app"
+      })
+    </script>
+</body>
+</html>

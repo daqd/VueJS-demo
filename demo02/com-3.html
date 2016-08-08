@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>局部注册实例</title>
+</head>
+<body>
+  <script src="../lib\js\vue.js" charset="utf-8"></script>
+  <div id="app">
+    <demo-component></demo-component>
+  </div>
+  <demo-component></demo-component>
+  <script>
+  // 先定义
+    var demoComponent = Vue.extend({
+      template:"<div> this is a child compoent!<div>"
+    })
+  //注册
+  //Vue.compoent("demo-Component",demoComponent);
+
+  // 在使用
+  new Vue({
+    el:"#app",
+    components:{
+        'demo-component':demoComponent
+      }
+  })
+  </script>
+
+</body>
+</html>

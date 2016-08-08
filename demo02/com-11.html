@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>子组件访问父组件</title>
+</head>
+<body>
+  <script src="../lib\js\vue.js" charset="utf-8"></script>
+  <div id="app">
+      <parentcomponent></parentcomponent>
+  </div>
+  <template id="parentComponent">
+    <component1></component1>
+  </template>
+  <template id="childComponent">
+      <h1>this is a childComponent!</h1>
+      <input type="button" @click="showMsg" value="获取父组件的msg值">
+  </template>
+  
+  <script>
+    Vue.component('parentcomponent',{
+      template:"#parentComponent",
+      components:{
+        'component1':{
+          template:"#childComponent",
+          methods:{
+            showMsg:function(){
+              alert(this.$parent.msg);
+            }
+          }
+        }
+      },
+      data:function(){
+        return{
+          msg:"this is parent component msg!"
+        }
+      }
+    })
+
+    new Vue({
+      el:"#app"
+    })
+  </script>
+</body>
+</html>

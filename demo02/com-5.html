@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>语法糖</title>
+</head>
+<body>
+  <script src="../lib\js\vue.js" charset="utf-8"></script>
+  <div id="app1">
+    <global-component1></global-component1>
+    <global-component2></global-component2>
+    <component3></component3>
+  </div>
+
+  <div id="app2">
+      <global-component1></global-component1>
+      <global-component2></global-component2>
+  </div>
+  <script>
+      Vue.component('global-component1',{
+        template:"<div>this is global component! First component !</div>"
+      })
+
+      Vue.component('global-component2',{
+        template:'<div>this is global component! second component !</div>'
+      })
+
+      var vm1 = new Vue({
+        el:"#app1",
+        components:{
+          'component3':{
+            template:"this is third component!"
+          }
+        }
+      })
+
+      var vm2 = new Vue({
+        el:"#app2"
+      })
+
+  </script>
+</body>
+</html>

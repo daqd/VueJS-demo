@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>父组件和子组件</title>
+</head>
+<body>
+  <script src="../lib\js\vue.js" charset="utf-8"></script>
+  <div id="app">
+      <parent-component>
+
+      </parent-component>
+
+  </div>
+  <script>
+    var childComponent = Vue.extend({
+      template:"<div> this is a child component!</div>"
+    })
+
+    var ParentComponent = Vue.extend({
+      template:"<div> this is a parent component!   <child-component></child-component> </div>",
+      components:{
+        "child-component":childComponent
+      }
+    })
+
+    Vue.component('parent-component',ParentComponent);
+
+
+    new Vue({
+      el:"#app"
+    })
+
+
+  </script>
+</body>
+</html>

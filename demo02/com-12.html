@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件派发</title>
+</head>
+<body>
+  <script src="../lib\js\vue.js" charset="utf-8"></script>
+  <div id="app">
+    <childcomponent></childcomponent>
+    {{message}}
+  </div>
+  <template id="childComponent">
+    <input v-model="msg">
+    <input type="button" name="name" value="提交" @click="addMsg">
+  </template>
+  <script>
+      Vue.component('childcomponent',{
+        template:"#childComponent",
+        data:function(){
+          return{
+              msg:''
+            }
+        },
+        methods:{
+          addMsg:function(){
+            if(this.msg.trim()){
+                this.$dispatch('pushMes',this.msg);
+                this.msg='';
+            }
+          }
+        }
+      });
+
+      new Vue({
+        el:"#app",
+        data:{
+          message:[]
+        },
+        events:{
+          pushMes:function(msg){
+              this.message.push(msg);
+          }
+        }
+
+      })
+  </script>
+</body>
+</html>
